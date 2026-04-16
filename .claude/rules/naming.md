@@ -1,6 +1,6 @@
 # Naming
 
-> 전체 네이밍 표: `.claude/docs/naming-detail.md` 참조
+> 전체 네이밍 표: 스킬 호출 시 `.claude/docs/naming-detail.md` 로드됨
 
 ## 핵심 패턴
 
