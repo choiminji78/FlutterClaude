@@ -1,6 +1,6 @@
 # State Management
 
-> 코드 템플릿, 큐 동작 보장표, Provider 스코프 표: `.claude/docs/state-management-detail.md` 참조
+> 코드 템플릿·Provider 스코프 표: 스킬 호출 시 `.claude/docs/state-management-detail.md` 로드됨
 
 ## 패턴
 

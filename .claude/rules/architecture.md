@@ -1,6 +1,6 @@
 # Architecture
 
-> 상세 규칙, 코드 예시, 디렉토리 구조: `.claude/docs/architecture-detail.md`, `.claude/docs/directory-structure.md` 참조
+> 코드 예시·디렉토리 구조: 스킬 호출 시 `.claude/docs/architecture-detail.md`, `.claude/docs/directory-structure.md` 로드됨
 
 ## 레이어 및 의존 방향 (역방향 절대 금지)
 
@@ -74,8 +74,7 @@ core    -> (없음)
 
 - SharedPreferences: 비민감 키-값 설정
 - flutter_secure_storage: 토큰, 인증 등 민감 정보
-- Hive: 구조화된 객체, 인덱싱 불필요
-- Drift: SQL 쿼리, 조인, 대용량 데이터
+- Drift: 구조화된 객체, SQL 쿼리, 조인, 대용량 데이터
 - 저장소 접근은 반드시 DataSource를 통해서만.
 
 ## 테스트

@@ -9,8 +9,8 @@
 | DTO (요청) | `[domain]_request_dto.dart` | `create_[domain]_request_dto.dart` |
 | DTO (응답) | `[domain]_response_dto.dart` | `[domain]_response_dto.dart` |
 | Entity | `[domain]_entity.dart` | `[domain]_entity.dart` |
+| Enum | `[name].dart` | `user_status.dart` |
 | Mapper | `[domain]_mapper.dart` | `[domain]_mapper.dart` |
-| Hive 통합 Mapper | `[domain]_hive_mapper.dart` | `[domain]_hive_mapper.dart` |
 | Drift 통합 Mapper | `[domain]_drift_mapper.dart` | `[domain]_drift_mapper.dart` |
 | ExceptionMapper | `exception_mapper.dart` | `exception_mapper.dart` |
 | StorageExceptionMapper | `storage_exception_mapper.dart` | `storage_exception_mapper.dart` |
@@ -26,7 +26,6 @@
 | ViewModel | `[feature]_view_model.dart` | `[feature]_view_model.dart` |
 | Page/Screen | `[feature]_page.dart` | `[feature]_page.dart` |
 | DI | `[domain]_di.dart` | `[domain]_di.dart` |
-| Hive Model | `[domain]_hive_model.dart` | `[domain]_hive_model.dart` |
 | Drift Table | `[domain]_table.dart` | `[domain]_table.dart` |
 | 공유 위젯 | `[name]_widget.dart` | `loading_widget.dart` |
 | 테스트 파일 | `[원본파일명]_test.dart` | `[feature]_reducer_test.dart` |
@@ -42,8 +41,8 @@
 | DTO (요청) | `[Domain]RequestDto` | `Create[Domain]RequestDto` |
 | DTO (응답) | `[Domain]ResponseDto` | `[Domain]ResponseDto` |
 | Entity | `[Domain]Entity` | `[Domain]Entity` |
+| Enum | `[Name]` (PascalCase) | `UserStatus` |
 | Mapper | `[Domain]Mapper` | `[Domain]Mapper` |
-| Hive 통합 Mapper | `[Domain]HiveMapper` | `[Domain]HiveMapper` |
 | Drift 통합 Mapper | `[Domain]DriftMapper` | `[Domain]DriftMapper` |
 | Repository 인터페이스 | `[Domain]Repository` | `[Domain]Repository` |
 | Repository 구현체 | `[Domain]RepositoryImpl` | `[Domain]RepositoryImpl` |
@@ -90,6 +89,6 @@ Riverpod Generator가 자동 생성하는 Provider는 클래스명을 기반으�
 |---|---|---|
 | `core` | 기술 역할 기반 | `network/`, `storage/`, `logging/`, `navigation/`, `viewmodel/` |
 | `data` | 도메인 기반 + 공통 | `[domain]/`, `common/` |
-| `domain` | 도메인 기반 + 공통 | `[domain]/`, `common/` |
+| `domain` | 도메인 기반 + 공통 | `[domain]/`, `common/` — enum은 `[domain]/enum/`, 공유 enum은 `common/enum/` |
 | `feature` | 화면(UI) 기반 | `[feature]/` |
 | `app` | 역할 기반 | `di/`, `router/`, `viewmodel/` |

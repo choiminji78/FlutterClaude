@@ -62,11 +62,6 @@
 │   ├── secure_storage/
 │   │   └── secure_storage_service.dart
 │   └── database/
-│       ├── hive/
-│       │   ├── models/
-│       │   │   ├── [domain]_hive_model.dart
-│       │   │   └── [domain]_hive_model.g.dart
-│       │   └── hive_database_service.dart
 │       └── drift/
 │           ├── tables/
 │           │   └── [domain]_table.dart
@@ -93,7 +88,6 @@
     │       └── [domain]_response_dto.dart
     ├── mapper/
     │   ├── [domain]_mapper.dart
-    │   ├── [domain]_hive_mapper.dart   (Hive 사용 시)
     │   └── [domain]_drift_mapper.dart  (Drift 사용 시)
     ├── datasource/
     │   ├── remote/
@@ -107,12 +101,16 @@
 ├── common/
 │   ├── exception/
 │   │   └── app_exception.dart
-│   └── entity/
-│       ├── app_result.dart
-│       └── app_result.freezed.dart
+│   ├── entity/
+│   │   ├── app_result.dart
+│   │   └── app_result.freezed.dart
+│   └── enum/                           (2개 이상 도메인에서 공유하는 enum)
+│       └── [name].dart
 └── [domain]/
     ├── entity/
     │   └── [domain]_entity.dart
+    ├── enum/                            (해당 도메인 전용 enum)
+    │   └── [name].dart
     ├── repository/
     │   └── [domain]_repository.dart
     └── usecase/

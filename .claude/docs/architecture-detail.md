@@ -107,7 +107,7 @@ Storage 오류 -> StorageException -> StorageFailure -> Repository(StorageExcept
 
 - 모든 DI는 `app/di`에서 정의한다. (DataSource, Repository, UseCase, 인프라 서비스 전부)
 - 도메인 단위 파일은 `[domain]_di.dart` 네이밍을 따른다.
-- `storage_di.dart` -- 스토리지 인프라 서비스 Provider (`HiveDatabaseService`, `DriftDatabaseService`, `PreferencesService`, `SecureStorageService`)
+- `storage_di.dart` -- 스토리지 인프라 서비스 Provider (`DriftDatabaseService`, `PreferencesService`, `SecureStorageService`)
 - `network_di.dart` -- 네트워크 인프라 서비스 Provider (`ApiService`)
 - `di.dart`는 모든 DI 파일을 export하는 진입점이다.
 - domain 레이어는 Riverpod를 참조하지 않으며 순수 Dart 클래스만 허용한다.
@@ -157,8 +157,7 @@ Storage 오류 -> StorageException -> StorageFailure -> Repository(StorageExcept
 |---|---|
 | `SharedPreferences` | 단순 키-값 설정값 -- 로케일, 테마, 온보딩 완료 여부 등 비민감 데이터 |
 | `flutter_secure_storage` | 민감 정보 -- 토큰, 인증 정보 등 플랫폼 보안 저장소에 자동 암호화 저장 |
-| `Hive` | 구조화된 객체 목록, 인덱싱이 필요하지 않은 데이터 |
-| `Drift` | 복잡한 SQL 쿼리, 조인, 인덱싱, 대용량 로컬 데이터 필요 시 |
+| `Drift` | 구조화된 객체 목록, SQL 쿼리, 조인, 인덱싱, 대용량 로컬 데이터 |
 
 - 로컬 저장소 접근은 반드시 DataSource를 통해서만 수행한다. ViewModel이나 UseCase에서 직접 참조하지 않는다.
 - 하나의 도메인에서 여러 저장소를 혼용할 경우 local DataSource에서 통합한다.

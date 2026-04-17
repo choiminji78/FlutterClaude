@@ -57,7 +57,7 @@ description: This skill should be used when the user asks to "커밋", "커밋�
 | `feature/[feature]` | `feature/home` | `feat(feature/home): 홈 피드 무한 스크롤 기능 추가` |
 | `domain/[domain]` | `domain/user` | `feat(domain/user): GetCurrentUserUseCase 추가` |
 | `data/[domain]` | `data/user` | `feat(data/user): UserRemoteDataSource API 연동 추가` |
-| `core/*` | `core/network` 등 | `fix(core/storage): HiveDatabaseService 초기화 순서 오류 수정` |
+| `core/*` | `core/network` 등 | `fix(core/storage): DriftDatabaseService 초기화 순서 오류 수정` |
 | `app/*` | `app/di` 등 | `refactor(app/di): DI 등록 순서 재정렬` |
 | 여러 레이어 동시 | 최상위 레이어 또는 생략 | `feat: 사용자 프로필 조회 기능 추가` |
 | 프로젝트 설정 | `config` | `build: android minSdk 26 설정` |
