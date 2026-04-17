@@ -3,8 +3,8 @@
 ## 래퍼 모델 규칙
 
 ### ApiResponse\<T\>
-- `core/network/dto`에 정의한다.
-- `core/network/service`에서만 반환한다.
+- `core/network/http/dto`에 정의한다.
+- `core/network/http/service`에서만 반환한다.
 - `ApiSuccess<T>`, `ApiFailure<T>` 두 가지 상태만 가진다.
 
 ### StorageResponse\<T\>
@@ -44,7 +44,7 @@ API 오류 -> NetworkException -> ApiFailure -> Repository(ExceptionMapper) -> A
 Storage 오류 -> StorageException -> StorageFailure -> Repository(StorageExceptionMapper) -> AppException -> AppFailure -> ViewModel -> UI
 ```
 
-- `NetworkException`은 `core/network/exception`에서 발생하며, Service 레이어에서 `ApiFailure`로 감싼다.
+- `NetworkException`은 `core/network/exception`에서 발생하며 (http/ws 공통), Service 레이어에서 `ApiFailure`로 감싼다.
 - `StorageException`은 `core/storage/exception`에서 발생하며, Service 레이어에서 `StorageFailure`로 감싼다.
 - `ApiFailure -> AppFailure` 변환 시 `ExceptionMapper`를 통해 `NetworkException -> AppException`으로 변환한다.
 - `StorageFailure -> AppFailure` 변환 시 `StorageExceptionMapper`를 통해 `StorageException -> AppException`으로 변환한다.
@@ -55,7 +55,7 @@ Storage 오류 -> StorageException -> StorageFailure -> Repository(StorageExcept
 
 | 타입 | 위치 | 설명 |
 |---|---|---|
-| `NetworkException` | `core/network/exception` | 네트워크 기술 예외 |
+| `NetworkException` | `core/network/exception` | 네트워크 기술 예외 (http/ws 공통) |
 | `StorageException` | `core/storage/common/exception` | 스토리지 기술 예외 |
 | `AppException` | `domain/common/exception` | 비즈니스 예외 |
 | `ExceptionMapper` | `data/common/mapper` | `NetworkException -> AppException` 변환 |

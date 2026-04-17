@@ -35,22 +35,24 @@
 
 [core]
 ├── network/
-│   ├── client/
-│   │   ├── base_client.dart
-│   │   └── api_client.dart
-│   ├── dto/
-│   │   ├── api_response.dart
-│   │   └── api_response.freezed.dart
-│   ├── service/
-│   │   └── api_service.dart
-│   ├── interceptor/
-│   │   ├── logging_interceptor.dart
-│   │   ├── error_interceptor.dart
-│   │   └── retry_interceptor.dart
-│   ├── exception/
-│   │   └── network_exception.dart
-│   └── utils/
-│       └── network_constants.dart
+│   ├── http/
+│   │   ├── client/
+│   │   │   ├── base_client.dart
+│   │   │   └── api_client.dart
+│   │   ├── dto/
+│   │   │   ├── api_response.dart
+│   │   │   └── api_response.freezed.dart
+│   │   ├── service/
+│   │   │   └── api_service.dart
+│   │   ├── interceptor/
+│   │   │   ├── logging_interceptor.dart
+│   │   │   ├── error_interceptor.dart
+│   │   │   └── retry_interceptor.dart
+│   │   └── utils/
+│   │       └── network_constants.dart
+│   ├── ws/                              (WebSocket, 필요 시 구현)
+│   └── exception/
+│       └── network_exception.dart
 ├── storage/
 │   ├── common/
 │   │   ├── dto/
