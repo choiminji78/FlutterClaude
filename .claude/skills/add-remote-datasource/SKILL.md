@@ -20,7 +20,7 @@ argument-hint: "[domain 이름 (예: user, product, order)]"
 Glob으로 아래 파일의 존재 여부를 확인한다.
 
 ```
-lib/core/network/dto/api_response.dart
+lib/core/network/http/dto/api_response.dart
 lib/core/network/exception/network_exception.dart
 lib/domain/common/entity/app_result.dart
 lib/domain/common/exception/app_exception.dart
@@ -163,7 +163,7 @@ class [Domain]RequestDto with _$[Domain]RequestDto {
 ### Remote DataSource
 
 ```dart
-import 'package:flutter_claude/core/network/dto/api_response.dart';
+import 'package:flutter_claude/core/network/http/dto/api_response.dart';
 import 'package:flutter_claude/data/[domain]/dto/response/[domain]_response_dto.dart';
 // import 'package:flutter_claude/data/[domain]/dto/request/[domain]_request_dto.dart';
 
@@ -270,7 +270,7 @@ export '[domain]_di.dart';
 
 ```dart
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:flutter_claude/core/network/service/api_service.dart';
+import 'package:flutter_claude/app/di/network_di.dart';
 import 'package:flutter_claude/data/[domain]/datasource/remote/[domain]_remote_data_source.dart';
 import 'package:flutter_claude/data/[domain]/mapper/[domain]_mapper.dart';
 import 'package:flutter_claude/data/[domain]/repository/[domain]_repository_impl.dart';
