@@ -17,7 +17,12 @@ class ContactInputPage extends ConsumerWidget {
       if (next.error != null && prev?.error != next.error) {
         ref.read(appViewModelProvider.notifier).showError(
           next.error!.when(
+            network: (msg) => '네트워크 오류: $msg',
+            server: (code, msg) => '서버 오류 $code: $msg',
+            unauthorized: (msg) => '인증 오류: $msg',
+            forbidden: (msg) => '접근 거부: $msg',
             notFound: (msg) => '찾을 수 없음: $msg',
+            timeout: (msg) => '시간 초과: $msg',
             unknown: (msg) => '오류: $msg',
           ),
         );

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'app_exception.dart';
+part of 'network_exception.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 );
 
 /// @nodoc
-mixin _$AppException {
+mixin _$NetworkException {
   String get message => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -51,64 +51,64 @@ mixin _$AppException {
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AppNetwork value) network,
-    required TResult Function(AppServer value) server,
-    required TResult Function(AppUnauthorized value) unauthorized,
-    required TResult Function(AppForbidden value) forbidden,
-    required TResult Function(AppNotFound value) notFound,
-    required TResult Function(AppTimeout value) timeout,
-    required TResult Function(AppUnknown value) unknown,
+    required TResult Function(NetworkExceptionNetwork value) network,
+    required TResult Function(NetworkExceptionServer value) server,
+    required TResult Function(NetworkExceptionUnauthorized value) unauthorized,
+    required TResult Function(NetworkExceptionForbidden value) forbidden,
+    required TResult Function(NetworkExceptionNotFound value) notFound,
+    required TResult Function(NetworkExceptionTimeout value) timeout,
+    required TResult Function(NetworkExceptionUnknown value) unknown,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AppNetwork value)? network,
-    TResult? Function(AppServer value)? server,
-    TResult? Function(AppUnauthorized value)? unauthorized,
-    TResult? Function(AppForbidden value)? forbidden,
-    TResult? Function(AppNotFound value)? notFound,
-    TResult? Function(AppTimeout value)? timeout,
-    TResult? Function(AppUnknown value)? unknown,
+    TResult? Function(NetworkExceptionNetwork value)? network,
+    TResult? Function(NetworkExceptionServer value)? server,
+    TResult? Function(NetworkExceptionUnauthorized value)? unauthorized,
+    TResult? Function(NetworkExceptionForbidden value)? forbidden,
+    TResult? Function(NetworkExceptionNotFound value)? notFound,
+    TResult? Function(NetworkExceptionTimeout value)? timeout,
+    TResult? Function(NetworkExceptionUnknown value)? unknown,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AppNetwork value)? network,
-    TResult Function(AppServer value)? server,
-    TResult Function(AppUnauthorized value)? unauthorized,
-    TResult Function(AppForbidden value)? forbidden,
-    TResult Function(AppNotFound value)? notFound,
-    TResult Function(AppTimeout value)? timeout,
-    TResult Function(AppUnknown value)? unknown,
+    TResult Function(NetworkExceptionNetwork value)? network,
+    TResult Function(NetworkExceptionServer value)? server,
+    TResult Function(NetworkExceptionUnauthorized value)? unauthorized,
+    TResult Function(NetworkExceptionForbidden value)? forbidden,
+    TResult Function(NetworkExceptionNotFound value)? notFound,
+    TResult Function(NetworkExceptionTimeout value)? timeout,
+    TResult Function(NetworkExceptionUnknown value)? unknown,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $AppExceptionCopyWith<AppException> get copyWith =>
+  $NetworkExceptionCopyWith<NetworkException> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AppExceptionCopyWith<$Res> {
-  factory $AppExceptionCopyWith(
-    AppException value,
-    $Res Function(AppException) then,
-  ) = _$AppExceptionCopyWithImpl<$Res, AppException>;
+abstract class $NetworkExceptionCopyWith<$Res> {
+  factory $NetworkExceptionCopyWith(
+    NetworkException value,
+    $Res Function(NetworkException) then,
+  ) = _$NetworkExceptionCopyWithImpl<$Res, NetworkException>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class _$AppExceptionCopyWithImpl<$Res, $Val extends AppException>
-    implements $AppExceptionCopyWith<$Res> {
-  _$AppExceptionCopyWithImpl(this._value, this._then);
+class _$NetworkExceptionCopyWithImpl<$Res, $Val extends NetworkException>
+    implements $NetworkExceptionCopyWith<$Res> {
+  _$NetworkExceptionCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -126,33 +126,33 @@ class _$AppExceptionCopyWithImpl<$Res, $Val extends AppException>
 }
 
 /// @nodoc
-abstract class _$$AppNetworkImplCopyWith<$Res>
-    implements $AppExceptionCopyWith<$Res> {
-  factory _$$AppNetworkImplCopyWith(
-    _$AppNetworkImpl value,
-    $Res Function(_$AppNetworkImpl) then,
-  ) = __$$AppNetworkImplCopyWithImpl<$Res>;
+abstract class _$$NetworkExceptionNetworkImplCopyWith<$Res>
+    implements $NetworkExceptionCopyWith<$Res> {
+  factory _$$NetworkExceptionNetworkImplCopyWith(
+    _$NetworkExceptionNetworkImpl value,
+    $Res Function(_$NetworkExceptionNetworkImpl) then,
+  ) = __$$NetworkExceptionNetworkImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$AppNetworkImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$AppNetworkImpl>
-    implements _$$AppNetworkImplCopyWith<$Res> {
-  __$$AppNetworkImplCopyWithImpl(
-    _$AppNetworkImpl _value,
-    $Res Function(_$AppNetworkImpl) _then,
+class __$$NetworkExceptionNetworkImplCopyWithImpl<$Res>
+    extends _$NetworkExceptionCopyWithImpl<$Res, _$NetworkExceptionNetworkImpl>
+    implements _$$NetworkExceptionNetworkImplCopyWith<$Res> {
+  __$$NetworkExceptionNetworkImplCopyWithImpl(
+    _$NetworkExceptionNetworkImpl _value,
+    $Res Function(_$NetworkExceptionNetworkImpl) _then,
   ) : super(_value, _then);
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({Object? message = null}) {
     return _then(
-      _$AppNetworkImpl(
+      _$NetworkExceptionNetworkImpl(
         null == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
@@ -164,35 +164,38 @@ class __$$AppNetworkImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AppNetworkImpl implements AppNetwork {
-  const _$AppNetworkImpl(this.message);
+class _$NetworkExceptionNetworkImpl implements NetworkExceptionNetwork {
+  const _$NetworkExceptionNetworkImpl(this.message);
 
   @override
   final String message;
 
   @override
   String toString() {
-    return 'AppException.network(message: $message)';
+    return 'NetworkException.network(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AppNetworkImpl &&
+            other is _$NetworkExceptionNetworkImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AppNetworkImplCopyWith<_$AppNetworkImpl> get copyWith =>
-      __$$AppNetworkImplCopyWithImpl<_$AppNetworkImpl>(this, _$identity);
+  _$$NetworkExceptionNetworkImplCopyWith<_$NetworkExceptionNetworkImpl>
+  get copyWith =>
+      __$$NetworkExceptionNetworkImplCopyWithImpl<
+        _$NetworkExceptionNetworkImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -243,13 +246,13 @@ class _$AppNetworkImpl implements AppNetwork {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AppNetwork value) network,
-    required TResult Function(AppServer value) server,
-    required TResult Function(AppUnauthorized value) unauthorized,
-    required TResult Function(AppForbidden value) forbidden,
-    required TResult Function(AppNotFound value) notFound,
-    required TResult Function(AppTimeout value) timeout,
-    required TResult Function(AppUnknown value) unknown,
+    required TResult Function(NetworkExceptionNetwork value) network,
+    required TResult Function(NetworkExceptionServer value) server,
+    required TResult Function(NetworkExceptionUnauthorized value) unauthorized,
+    required TResult Function(NetworkExceptionForbidden value) forbidden,
+    required TResult Function(NetworkExceptionNotFound value) notFound,
+    required TResult Function(NetworkExceptionTimeout value) timeout,
+    required TResult Function(NetworkExceptionUnknown value) unknown,
   }) {
     return network(this);
   }
@@ -257,13 +260,13 @@ class _$AppNetworkImpl implements AppNetwork {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AppNetwork value)? network,
-    TResult? Function(AppServer value)? server,
-    TResult? Function(AppUnauthorized value)? unauthorized,
-    TResult? Function(AppForbidden value)? forbidden,
-    TResult? Function(AppNotFound value)? notFound,
-    TResult? Function(AppTimeout value)? timeout,
-    TResult? Function(AppUnknown value)? unknown,
+    TResult? Function(NetworkExceptionNetwork value)? network,
+    TResult? Function(NetworkExceptionServer value)? server,
+    TResult? Function(NetworkExceptionUnauthorized value)? unauthorized,
+    TResult? Function(NetworkExceptionForbidden value)? forbidden,
+    TResult? Function(NetworkExceptionNotFound value)? notFound,
+    TResult? Function(NetworkExceptionTimeout value)? timeout,
+    TResult? Function(NetworkExceptionUnknown value)? unknown,
   }) {
     return network?.call(this);
   }
@@ -271,13 +274,13 @@ class _$AppNetworkImpl implements AppNetwork {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AppNetwork value)? network,
-    TResult Function(AppServer value)? server,
-    TResult Function(AppUnauthorized value)? unauthorized,
-    TResult Function(AppForbidden value)? forbidden,
-    TResult Function(AppNotFound value)? notFound,
-    TResult Function(AppTimeout value)? timeout,
-    TResult Function(AppUnknown value)? unknown,
+    TResult Function(NetworkExceptionNetwork value)? network,
+    TResult Function(NetworkExceptionServer value)? server,
+    TResult Function(NetworkExceptionUnauthorized value)? unauthorized,
+    TResult Function(NetworkExceptionForbidden value)? forbidden,
+    TResult Function(NetworkExceptionNotFound value)? notFound,
+    TResult Function(NetworkExceptionTimeout value)? timeout,
+    TResult Function(NetworkExceptionUnknown value)? unknown,
     required TResult orElse(),
   }) {
     if (network != null) {
@@ -287,48 +290,49 @@ class _$AppNetworkImpl implements AppNetwork {
   }
 }
 
-abstract class AppNetwork implements AppException {
-  const factory AppNetwork(final String message) = _$AppNetworkImpl;
+abstract class NetworkExceptionNetwork implements NetworkException {
+  const factory NetworkExceptionNetwork(final String message) =
+      _$NetworkExceptionNetworkImpl;
 
   @override
   String get message;
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AppNetworkImplCopyWith<_$AppNetworkImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$NetworkExceptionNetworkImplCopyWith<_$NetworkExceptionNetworkImpl>
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AppServerImplCopyWith<$Res>
-    implements $AppExceptionCopyWith<$Res> {
-  factory _$$AppServerImplCopyWith(
-    _$AppServerImpl value,
-    $Res Function(_$AppServerImpl) then,
-  ) = __$$AppServerImplCopyWithImpl<$Res>;
+abstract class _$$NetworkExceptionServerImplCopyWith<$Res>
+    implements $NetworkExceptionCopyWith<$Res> {
+  factory _$$NetworkExceptionServerImplCopyWith(
+    _$NetworkExceptionServerImpl value,
+    $Res Function(_$NetworkExceptionServerImpl) then,
+  ) = __$$NetworkExceptionServerImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int statusCode, String message});
 }
 
 /// @nodoc
-class __$$AppServerImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$AppServerImpl>
-    implements _$$AppServerImplCopyWith<$Res> {
-  __$$AppServerImplCopyWithImpl(
-    _$AppServerImpl _value,
-    $Res Function(_$AppServerImpl) _then,
+class __$$NetworkExceptionServerImplCopyWithImpl<$Res>
+    extends _$NetworkExceptionCopyWithImpl<$Res, _$NetworkExceptionServerImpl>
+    implements _$$NetworkExceptionServerImplCopyWith<$Res> {
+  __$$NetworkExceptionServerImplCopyWithImpl(
+    _$NetworkExceptionServerImpl _value,
+    $Res Function(_$NetworkExceptionServerImpl) _then,
   ) : super(_value, _then);
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({Object? statusCode = null, Object? message = null}) {
     return _then(
-      _$AppServerImpl(
+      _$NetworkExceptionServerImpl(
         null == statusCode
             ? _value.statusCode
             : statusCode // ignore: cast_nullable_to_non_nullable
@@ -344,8 +348,8 @@ class __$$AppServerImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AppServerImpl implements AppServer {
-  const _$AppServerImpl(this.statusCode, this.message);
+class _$NetworkExceptionServerImpl implements NetworkExceptionServer {
+  const _$NetworkExceptionServerImpl(this.statusCode, this.message);
 
   @override
   final int statusCode;
@@ -354,14 +358,14 @@ class _$AppServerImpl implements AppServer {
 
   @override
   String toString() {
-    return 'AppException.server(statusCode: $statusCode, message: $message)';
+    return 'NetworkException.server(statusCode: $statusCode, message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AppServerImpl &&
+            other is _$NetworkExceptionServerImpl &&
             (identical(other.statusCode, statusCode) ||
                 other.statusCode == statusCode) &&
             (identical(other.message, message) || other.message == message));
@@ -370,13 +374,17 @@ class _$AppServerImpl implements AppServer {
   @override
   int get hashCode => Object.hash(runtimeType, statusCode, message);
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AppServerImplCopyWith<_$AppServerImpl> get copyWith =>
-      __$$AppServerImplCopyWithImpl<_$AppServerImpl>(this, _$identity);
+  _$$NetworkExceptionServerImplCopyWith<_$NetworkExceptionServerImpl>
+  get copyWith =>
+      __$$NetworkExceptionServerImplCopyWithImpl<_$NetworkExceptionServerImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -427,13 +435,13 @@ class _$AppServerImpl implements AppServer {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AppNetwork value) network,
-    required TResult Function(AppServer value) server,
-    required TResult Function(AppUnauthorized value) unauthorized,
-    required TResult Function(AppForbidden value) forbidden,
-    required TResult Function(AppNotFound value) notFound,
-    required TResult Function(AppTimeout value) timeout,
-    required TResult Function(AppUnknown value) unknown,
+    required TResult Function(NetworkExceptionNetwork value) network,
+    required TResult Function(NetworkExceptionServer value) server,
+    required TResult Function(NetworkExceptionUnauthorized value) unauthorized,
+    required TResult Function(NetworkExceptionForbidden value) forbidden,
+    required TResult Function(NetworkExceptionNotFound value) notFound,
+    required TResult Function(NetworkExceptionTimeout value) timeout,
+    required TResult Function(NetworkExceptionUnknown value) unknown,
   }) {
     return server(this);
   }
@@ -441,13 +449,13 @@ class _$AppServerImpl implements AppServer {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AppNetwork value)? network,
-    TResult? Function(AppServer value)? server,
-    TResult? Function(AppUnauthorized value)? unauthorized,
-    TResult? Function(AppForbidden value)? forbidden,
-    TResult? Function(AppNotFound value)? notFound,
-    TResult? Function(AppTimeout value)? timeout,
-    TResult? Function(AppUnknown value)? unknown,
+    TResult? Function(NetworkExceptionNetwork value)? network,
+    TResult? Function(NetworkExceptionServer value)? server,
+    TResult? Function(NetworkExceptionUnauthorized value)? unauthorized,
+    TResult? Function(NetworkExceptionForbidden value)? forbidden,
+    TResult? Function(NetworkExceptionNotFound value)? notFound,
+    TResult? Function(NetworkExceptionTimeout value)? timeout,
+    TResult? Function(NetworkExceptionUnknown value)? unknown,
   }) {
     return server?.call(this);
   }
@@ -455,13 +463,13 @@ class _$AppServerImpl implements AppServer {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AppNetwork value)? network,
-    TResult Function(AppServer value)? server,
-    TResult Function(AppUnauthorized value)? unauthorized,
-    TResult Function(AppForbidden value)? forbidden,
-    TResult Function(AppNotFound value)? notFound,
-    TResult Function(AppTimeout value)? timeout,
-    TResult Function(AppUnknown value)? unknown,
+    TResult Function(NetworkExceptionNetwork value)? network,
+    TResult Function(NetworkExceptionServer value)? server,
+    TResult Function(NetworkExceptionUnauthorized value)? unauthorized,
+    TResult Function(NetworkExceptionForbidden value)? forbidden,
+    TResult Function(NetworkExceptionNotFound value)? notFound,
+    TResult Function(NetworkExceptionTimeout value)? timeout,
+    TResult Function(NetworkExceptionUnknown value)? unknown,
     required TResult orElse(),
   }) {
     if (server != null) {
@@ -471,50 +479,53 @@ class _$AppServerImpl implements AppServer {
   }
 }
 
-abstract class AppServer implements AppException {
-  const factory AppServer(final int statusCode, final String message) =
-      _$AppServerImpl;
+abstract class NetworkExceptionServer implements NetworkException {
+  const factory NetworkExceptionServer(
+    final int statusCode,
+    final String message,
+  ) = _$NetworkExceptionServerImpl;
 
   int get statusCode;
   @override
   String get message;
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AppServerImplCopyWith<_$AppServerImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$NetworkExceptionServerImplCopyWith<_$NetworkExceptionServerImpl>
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AppUnauthorizedImplCopyWith<$Res>
-    implements $AppExceptionCopyWith<$Res> {
-  factory _$$AppUnauthorizedImplCopyWith(
-    _$AppUnauthorizedImpl value,
-    $Res Function(_$AppUnauthorizedImpl) then,
-  ) = __$$AppUnauthorizedImplCopyWithImpl<$Res>;
+abstract class _$$NetworkExceptionUnauthorizedImplCopyWith<$Res>
+    implements $NetworkExceptionCopyWith<$Res> {
+  factory _$$NetworkExceptionUnauthorizedImplCopyWith(
+    _$NetworkExceptionUnauthorizedImpl value,
+    $Res Function(_$NetworkExceptionUnauthorizedImpl) then,
+  ) = __$$NetworkExceptionUnauthorizedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$AppUnauthorizedImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$AppUnauthorizedImpl>
-    implements _$$AppUnauthorizedImplCopyWith<$Res> {
-  __$$AppUnauthorizedImplCopyWithImpl(
-    _$AppUnauthorizedImpl _value,
-    $Res Function(_$AppUnauthorizedImpl) _then,
+class __$$NetworkExceptionUnauthorizedImplCopyWithImpl<$Res>
+    extends
+        _$NetworkExceptionCopyWithImpl<$Res, _$NetworkExceptionUnauthorizedImpl>
+    implements _$$NetworkExceptionUnauthorizedImplCopyWith<$Res> {
+  __$$NetworkExceptionUnauthorizedImplCopyWithImpl(
+    _$NetworkExceptionUnauthorizedImpl _value,
+    $Res Function(_$NetworkExceptionUnauthorizedImpl) _then,
   ) : super(_value, _then);
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({Object? message = null}) {
     return _then(
-      _$AppUnauthorizedImpl(
+      _$NetworkExceptionUnauthorizedImpl(
         null == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
@@ -526,38 +537,41 @@ class __$$AppUnauthorizedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AppUnauthorizedImpl implements AppUnauthorized {
-  const _$AppUnauthorizedImpl(this.message);
+class _$NetworkExceptionUnauthorizedImpl
+    implements NetworkExceptionUnauthorized {
+  const _$NetworkExceptionUnauthorizedImpl(this.message);
 
   @override
   final String message;
 
   @override
   String toString() {
-    return 'AppException.unauthorized(message: $message)';
+    return 'NetworkException.unauthorized(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AppUnauthorizedImpl &&
+            other is _$NetworkExceptionUnauthorizedImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AppUnauthorizedImplCopyWith<_$AppUnauthorizedImpl> get copyWith =>
-      __$$AppUnauthorizedImplCopyWithImpl<_$AppUnauthorizedImpl>(
-        this,
-        _$identity,
-      );
+  _$$NetworkExceptionUnauthorizedImplCopyWith<
+    _$NetworkExceptionUnauthorizedImpl
+  >
+  get copyWith =>
+      __$$NetworkExceptionUnauthorizedImplCopyWithImpl<
+        _$NetworkExceptionUnauthorizedImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -608,13 +622,13 @@ class _$AppUnauthorizedImpl implements AppUnauthorized {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AppNetwork value) network,
-    required TResult Function(AppServer value) server,
-    required TResult Function(AppUnauthorized value) unauthorized,
-    required TResult Function(AppForbidden value) forbidden,
-    required TResult Function(AppNotFound value) notFound,
-    required TResult Function(AppTimeout value) timeout,
-    required TResult Function(AppUnknown value) unknown,
+    required TResult Function(NetworkExceptionNetwork value) network,
+    required TResult Function(NetworkExceptionServer value) server,
+    required TResult Function(NetworkExceptionUnauthorized value) unauthorized,
+    required TResult Function(NetworkExceptionForbidden value) forbidden,
+    required TResult Function(NetworkExceptionNotFound value) notFound,
+    required TResult Function(NetworkExceptionTimeout value) timeout,
+    required TResult Function(NetworkExceptionUnknown value) unknown,
   }) {
     return unauthorized(this);
   }
@@ -622,13 +636,13 @@ class _$AppUnauthorizedImpl implements AppUnauthorized {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AppNetwork value)? network,
-    TResult? Function(AppServer value)? server,
-    TResult? Function(AppUnauthorized value)? unauthorized,
-    TResult? Function(AppForbidden value)? forbidden,
-    TResult? Function(AppNotFound value)? notFound,
-    TResult? Function(AppTimeout value)? timeout,
-    TResult? Function(AppUnknown value)? unknown,
+    TResult? Function(NetworkExceptionNetwork value)? network,
+    TResult? Function(NetworkExceptionServer value)? server,
+    TResult? Function(NetworkExceptionUnauthorized value)? unauthorized,
+    TResult? Function(NetworkExceptionForbidden value)? forbidden,
+    TResult? Function(NetworkExceptionNotFound value)? notFound,
+    TResult? Function(NetworkExceptionTimeout value)? timeout,
+    TResult? Function(NetworkExceptionUnknown value)? unknown,
   }) {
     return unauthorized?.call(this);
   }
@@ -636,13 +650,13 @@ class _$AppUnauthorizedImpl implements AppUnauthorized {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AppNetwork value)? network,
-    TResult Function(AppServer value)? server,
-    TResult Function(AppUnauthorized value)? unauthorized,
-    TResult Function(AppForbidden value)? forbidden,
-    TResult Function(AppNotFound value)? notFound,
-    TResult Function(AppTimeout value)? timeout,
-    TResult Function(AppUnknown value)? unknown,
+    TResult Function(NetworkExceptionNetwork value)? network,
+    TResult Function(NetworkExceptionServer value)? server,
+    TResult Function(NetworkExceptionUnauthorized value)? unauthorized,
+    TResult Function(NetworkExceptionForbidden value)? forbidden,
+    TResult Function(NetworkExceptionNotFound value)? notFound,
+    TResult Function(NetworkExceptionTimeout value)? timeout,
+    TResult Function(NetworkExceptionUnknown value)? unknown,
     required TResult orElse(),
   }) {
     if (unauthorized != null) {
@@ -652,48 +666,52 @@ class _$AppUnauthorizedImpl implements AppUnauthorized {
   }
 }
 
-abstract class AppUnauthorized implements AppException {
-  const factory AppUnauthorized(final String message) = _$AppUnauthorizedImpl;
+abstract class NetworkExceptionUnauthorized implements NetworkException {
+  const factory NetworkExceptionUnauthorized(final String message) =
+      _$NetworkExceptionUnauthorizedImpl;
 
   @override
   String get message;
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AppUnauthorizedImplCopyWith<_$AppUnauthorizedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$NetworkExceptionUnauthorizedImplCopyWith<
+    _$NetworkExceptionUnauthorizedImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AppForbiddenImplCopyWith<$Res>
-    implements $AppExceptionCopyWith<$Res> {
-  factory _$$AppForbiddenImplCopyWith(
-    _$AppForbiddenImpl value,
-    $Res Function(_$AppForbiddenImpl) then,
-  ) = __$$AppForbiddenImplCopyWithImpl<$Res>;
+abstract class _$$NetworkExceptionForbiddenImplCopyWith<$Res>
+    implements $NetworkExceptionCopyWith<$Res> {
+  factory _$$NetworkExceptionForbiddenImplCopyWith(
+    _$NetworkExceptionForbiddenImpl value,
+    $Res Function(_$NetworkExceptionForbiddenImpl) then,
+  ) = __$$NetworkExceptionForbiddenImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$AppForbiddenImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$AppForbiddenImpl>
-    implements _$$AppForbiddenImplCopyWith<$Res> {
-  __$$AppForbiddenImplCopyWithImpl(
-    _$AppForbiddenImpl _value,
-    $Res Function(_$AppForbiddenImpl) _then,
+class __$$NetworkExceptionForbiddenImplCopyWithImpl<$Res>
+    extends
+        _$NetworkExceptionCopyWithImpl<$Res, _$NetworkExceptionForbiddenImpl>
+    implements _$$NetworkExceptionForbiddenImplCopyWith<$Res> {
+  __$$NetworkExceptionForbiddenImplCopyWithImpl(
+    _$NetworkExceptionForbiddenImpl _value,
+    $Res Function(_$NetworkExceptionForbiddenImpl) _then,
   ) : super(_value, _then);
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({Object? message = null}) {
     return _then(
-      _$AppForbiddenImpl(
+      _$NetworkExceptionForbiddenImpl(
         null == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
@@ -705,35 +723,38 @@ class __$$AppForbiddenImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AppForbiddenImpl implements AppForbidden {
-  const _$AppForbiddenImpl(this.message);
+class _$NetworkExceptionForbiddenImpl implements NetworkExceptionForbidden {
+  const _$NetworkExceptionForbiddenImpl(this.message);
 
   @override
   final String message;
 
   @override
   String toString() {
-    return 'AppException.forbidden(message: $message)';
+    return 'NetworkException.forbidden(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AppForbiddenImpl &&
+            other is _$NetworkExceptionForbiddenImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AppForbiddenImplCopyWith<_$AppForbiddenImpl> get copyWith =>
-      __$$AppForbiddenImplCopyWithImpl<_$AppForbiddenImpl>(this, _$identity);
+  _$$NetworkExceptionForbiddenImplCopyWith<_$NetworkExceptionForbiddenImpl>
+  get copyWith =>
+      __$$NetworkExceptionForbiddenImplCopyWithImpl<
+        _$NetworkExceptionForbiddenImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -784,13 +805,13 @@ class _$AppForbiddenImpl implements AppForbidden {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AppNetwork value) network,
-    required TResult Function(AppServer value) server,
-    required TResult Function(AppUnauthorized value) unauthorized,
-    required TResult Function(AppForbidden value) forbidden,
-    required TResult Function(AppNotFound value) notFound,
-    required TResult Function(AppTimeout value) timeout,
-    required TResult Function(AppUnknown value) unknown,
+    required TResult Function(NetworkExceptionNetwork value) network,
+    required TResult Function(NetworkExceptionServer value) server,
+    required TResult Function(NetworkExceptionUnauthorized value) unauthorized,
+    required TResult Function(NetworkExceptionForbidden value) forbidden,
+    required TResult Function(NetworkExceptionNotFound value) notFound,
+    required TResult Function(NetworkExceptionTimeout value) timeout,
+    required TResult Function(NetworkExceptionUnknown value) unknown,
   }) {
     return forbidden(this);
   }
@@ -798,13 +819,13 @@ class _$AppForbiddenImpl implements AppForbidden {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AppNetwork value)? network,
-    TResult? Function(AppServer value)? server,
-    TResult? Function(AppUnauthorized value)? unauthorized,
-    TResult? Function(AppForbidden value)? forbidden,
-    TResult? Function(AppNotFound value)? notFound,
-    TResult? Function(AppTimeout value)? timeout,
-    TResult? Function(AppUnknown value)? unknown,
+    TResult? Function(NetworkExceptionNetwork value)? network,
+    TResult? Function(NetworkExceptionServer value)? server,
+    TResult? Function(NetworkExceptionUnauthorized value)? unauthorized,
+    TResult? Function(NetworkExceptionForbidden value)? forbidden,
+    TResult? Function(NetworkExceptionNotFound value)? notFound,
+    TResult? Function(NetworkExceptionTimeout value)? timeout,
+    TResult? Function(NetworkExceptionUnknown value)? unknown,
   }) {
     return forbidden?.call(this);
   }
@@ -812,13 +833,13 @@ class _$AppForbiddenImpl implements AppForbidden {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AppNetwork value)? network,
-    TResult Function(AppServer value)? server,
-    TResult Function(AppUnauthorized value)? unauthorized,
-    TResult Function(AppForbidden value)? forbidden,
-    TResult Function(AppNotFound value)? notFound,
-    TResult Function(AppTimeout value)? timeout,
-    TResult Function(AppUnknown value)? unknown,
+    TResult Function(NetworkExceptionNetwork value)? network,
+    TResult Function(NetworkExceptionServer value)? server,
+    TResult Function(NetworkExceptionUnauthorized value)? unauthorized,
+    TResult Function(NetworkExceptionForbidden value)? forbidden,
+    TResult Function(NetworkExceptionNotFound value)? notFound,
+    TResult Function(NetworkExceptionTimeout value)? timeout,
+    TResult Function(NetworkExceptionUnknown value)? unknown,
     required TResult orElse(),
   }) {
     if (forbidden != null) {
@@ -828,48 +849,49 @@ class _$AppForbiddenImpl implements AppForbidden {
   }
 }
 
-abstract class AppForbidden implements AppException {
-  const factory AppForbidden(final String message) = _$AppForbiddenImpl;
+abstract class NetworkExceptionForbidden implements NetworkException {
+  const factory NetworkExceptionForbidden(final String message) =
+      _$NetworkExceptionForbiddenImpl;
 
   @override
   String get message;
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AppForbiddenImplCopyWith<_$AppForbiddenImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$NetworkExceptionForbiddenImplCopyWith<_$NetworkExceptionForbiddenImpl>
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AppNotFoundImplCopyWith<$Res>
-    implements $AppExceptionCopyWith<$Res> {
-  factory _$$AppNotFoundImplCopyWith(
-    _$AppNotFoundImpl value,
-    $Res Function(_$AppNotFoundImpl) then,
-  ) = __$$AppNotFoundImplCopyWithImpl<$Res>;
+abstract class _$$NetworkExceptionNotFoundImplCopyWith<$Res>
+    implements $NetworkExceptionCopyWith<$Res> {
+  factory _$$NetworkExceptionNotFoundImplCopyWith(
+    _$NetworkExceptionNotFoundImpl value,
+    $Res Function(_$NetworkExceptionNotFoundImpl) then,
+  ) = __$$NetworkExceptionNotFoundImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$AppNotFoundImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$AppNotFoundImpl>
-    implements _$$AppNotFoundImplCopyWith<$Res> {
-  __$$AppNotFoundImplCopyWithImpl(
-    _$AppNotFoundImpl _value,
-    $Res Function(_$AppNotFoundImpl) _then,
+class __$$NetworkExceptionNotFoundImplCopyWithImpl<$Res>
+    extends _$NetworkExceptionCopyWithImpl<$Res, _$NetworkExceptionNotFoundImpl>
+    implements _$$NetworkExceptionNotFoundImplCopyWith<$Res> {
+  __$$NetworkExceptionNotFoundImplCopyWithImpl(
+    _$NetworkExceptionNotFoundImpl _value,
+    $Res Function(_$NetworkExceptionNotFoundImpl) _then,
   ) : super(_value, _then);
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({Object? message = null}) {
     return _then(
-      _$AppNotFoundImpl(
+      _$NetworkExceptionNotFoundImpl(
         null == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
@@ -881,35 +903,38 @@ class __$$AppNotFoundImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AppNotFoundImpl implements AppNotFound {
-  const _$AppNotFoundImpl(this.message);
+class _$NetworkExceptionNotFoundImpl implements NetworkExceptionNotFound {
+  const _$NetworkExceptionNotFoundImpl(this.message);
 
   @override
   final String message;
 
   @override
   String toString() {
-    return 'AppException.notFound(message: $message)';
+    return 'NetworkException.notFound(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AppNotFoundImpl &&
+            other is _$NetworkExceptionNotFoundImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AppNotFoundImplCopyWith<_$AppNotFoundImpl> get copyWith =>
-      __$$AppNotFoundImplCopyWithImpl<_$AppNotFoundImpl>(this, _$identity);
+  _$$NetworkExceptionNotFoundImplCopyWith<_$NetworkExceptionNotFoundImpl>
+  get copyWith =>
+      __$$NetworkExceptionNotFoundImplCopyWithImpl<
+        _$NetworkExceptionNotFoundImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -960,13 +985,13 @@ class _$AppNotFoundImpl implements AppNotFound {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AppNetwork value) network,
-    required TResult Function(AppServer value) server,
-    required TResult Function(AppUnauthorized value) unauthorized,
-    required TResult Function(AppForbidden value) forbidden,
-    required TResult Function(AppNotFound value) notFound,
-    required TResult Function(AppTimeout value) timeout,
-    required TResult Function(AppUnknown value) unknown,
+    required TResult Function(NetworkExceptionNetwork value) network,
+    required TResult Function(NetworkExceptionServer value) server,
+    required TResult Function(NetworkExceptionUnauthorized value) unauthorized,
+    required TResult Function(NetworkExceptionForbidden value) forbidden,
+    required TResult Function(NetworkExceptionNotFound value) notFound,
+    required TResult Function(NetworkExceptionTimeout value) timeout,
+    required TResult Function(NetworkExceptionUnknown value) unknown,
   }) {
     return notFound(this);
   }
@@ -974,13 +999,13 @@ class _$AppNotFoundImpl implements AppNotFound {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AppNetwork value)? network,
-    TResult? Function(AppServer value)? server,
-    TResult? Function(AppUnauthorized value)? unauthorized,
-    TResult? Function(AppForbidden value)? forbidden,
-    TResult? Function(AppNotFound value)? notFound,
-    TResult? Function(AppTimeout value)? timeout,
-    TResult? Function(AppUnknown value)? unknown,
+    TResult? Function(NetworkExceptionNetwork value)? network,
+    TResult? Function(NetworkExceptionServer value)? server,
+    TResult? Function(NetworkExceptionUnauthorized value)? unauthorized,
+    TResult? Function(NetworkExceptionForbidden value)? forbidden,
+    TResult? Function(NetworkExceptionNotFound value)? notFound,
+    TResult? Function(NetworkExceptionTimeout value)? timeout,
+    TResult? Function(NetworkExceptionUnknown value)? unknown,
   }) {
     return notFound?.call(this);
   }
@@ -988,13 +1013,13 @@ class _$AppNotFoundImpl implements AppNotFound {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AppNetwork value)? network,
-    TResult Function(AppServer value)? server,
-    TResult Function(AppUnauthorized value)? unauthorized,
-    TResult Function(AppForbidden value)? forbidden,
-    TResult Function(AppNotFound value)? notFound,
-    TResult Function(AppTimeout value)? timeout,
-    TResult Function(AppUnknown value)? unknown,
+    TResult Function(NetworkExceptionNetwork value)? network,
+    TResult Function(NetworkExceptionServer value)? server,
+    TResult Function(NetworkExceptionUnauthorized value)? unauthorized,
+    TResult Function(NetworkExceptionForbidden value)? forbidden,
+    TResult Function(NetworkExceptionNotFound value)? notFound,
+    TResult Function(NetworkExceptionTimeout value)? timeout,
+    TResult Function(NetworkExceptionUnknown value)? unknown,
     required TResult orElse(),
   }) {
     if (notFound != null) {
@@ -1004,48 +1029,49 @@ class _$AppNotFoundImpl implements AppNotFound {
   }
 }
 
-abstract class AppNotFound implements AppException {
-  const factory AppNotFound(final String message) = _$AppNotFoundImpl;
+abstract class NetworkExceptionNotFound implements NetworkException {
+  const factory NetworkExceptionNotFound(final String message) =
+      _$NetworkExceptionNotFoundImpl;
 
   @override
   String get message;
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AppNotFoundImplCopyWith<_$AppNotFoundImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$NetworkExceptionNotFoundImplCopyWith<_$NetworkExceptionNotFoundImpl>
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AppTimeoutImplCopyWith<$Res>
-    implements $AppExceptionCopyWith<$Res> {
-  factory _$$AppTimeoutImplCopyWith(
-    _$AppTimeoutImpl value,
-    $Res Function(_$AppTimeoutImpl) then,
-  ) = __$$AppTimeoutImplCopyWithImpl<$Res>;
+abstract class _$$NetworkExceptionTimeoutImplCopyWith<$Res>
+    implements $NetworkExceptionCopyWith<$Res> {
+  factory _$$NetworkExceptionTimeoutImplCopyWith(
+    _$NetworkExceptionTimeoutImpl value,
+    $Res Function(_$NetworkExceptionTimeoutImpl) then,
+  ) = __$$NetworkExceptionTimeoutImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$AppTimeoutImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$AppTimeoutImpl>
-    implements _$$AppTimeoutImplCopyWith<$Res> {
-  __$$AppTimeoutImplCopyWithImpl(
-    _$AppTimeoutImpl _value,
-    $Res Function(_$AppTimeoutImpl) _then,
+class __$$NetworkExceptionTimeoutImplCopyWithImpl<$Res>
+    extends _$NetworkExceptionCopyWithImpl<$Res, _$NetworkExceptionTimeoutImpl>
+    implements _$$NetworkExceptionTimeoutImplCopyWith<$Res> {
+  __$$NetworkExceptionTimeoutImplCopyWithImpl(
+    _$NetworkExceptionTimeoutImpl _value,
+    $Res Function(_$NetworkExceptionTimeoutImpl) _then,
   ) : super(_value, _then);
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({Object? message = null}) {
     return _then(
-      _$AppTimeoutImpl(
+      _$NetworkExceptionTimeoutImpl(
         null == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
@@ -1057,35 +1083,38 @@ class __$$AppTimeoutImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AppTimeoutImpl implements AppTimeout {
-  const _$AppTimeoutImpl(this.message);
+class _$NetworkExceptionTimeoutImpl implements NetworkExceptionTimeout {
+  const _$NetworkExceptionTimeoutImpl(this.message);
 
   @override
   final String message;
 
   @override
   String toString() {
-    return 'AppException.timeout(message: $message)';
+    return 'NetworkException.timeout(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AppTimeoutImpl &&
+            other is _$NetworkExceptionTimeoutImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AppTimeoutImplCopyWith<_$AppTimeoutImpl> get copyWith =>
-      __$$AppTimeoutImplCopyWithImpl<_$AppTimeoutImpl>(this, _$identity);
+  _$$NetworkExceptionTimeoutImplCopyWith<_$NetworkExceptionTimeoutImpl>
+  get copyWith =>
+      __$$NetworkExceptionTimeoutImplCopyWithImpl<
+        _$NetworkExceptionTimeoutImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1136,13 +1165,13 @@ class _$AppTimeoutImpl implements AppTimeout {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AppNetwork value) network,
-    required TResult Function(AppServer value) server,
-    required TResult Function(AppUnauthorized value) unauthorized,
-    required TResult Function(AppForbidden value) forbidden,
-    required TResult Function(AppNotFound value) notFound,
-    required TResult Function(AppTimeout value) timeout,
-    required TResult Function(AppUnknown value) unknown,
+    required TResult Function(NetworkExceptionNetwork value) network,
+    required TResult Function(NetworkExceptionServer value) server,
+    required TResult Function(NetworkExceptionUnauthorized value) unauthorized,
+    required TResult Function(NetworkExceptionForbidden value) forbidden,
+    required TResult Function(NetworkExceptionNotFound value) notFound,
+    required TResult Function(NetworkExceptionTimeout value) timeout,
+    required TResult Function(NetworkExceptionUnknown value) unknown,
   }) {
     return timeout(this);
   }
@@ -1150,13 +1179,13 @@ class _$AppTimeoutImpl implements AppTimeout {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AppNetwork value)? network,
-    TResult? Function(AppServer value)? server,
-    TResult? Function(AppUnauthorized value)? unauthorized,
-    TResult? Function(AppForbidden value)? forbidden,
-    TResult? Function(AppNotFound value)? notFound,
-    TResult? Function(AppTimeout value)? timeout,
-    TResult? Function(AppUnknown value)? unknown,
+    TResult? Function(NetworkExceptionNetwork value)? network,
+    TResult? Function(NetworkExceptionServer value)? server,
+    TResult? Function(NetworkExceptionUnauthorized value)? unauthorized,
+    TResult? Function(NetworkExceptionForbidden value)? forbidden,
+    TResult? Function(NetworkExceptionNotFound value)? notFound,
+    TResult? Function(NetworkExceptionTimeout value)? timeout,
+    TResult? Function(NetworkExceptionUnknown value)? unknown,
   }) {
     return timeout?.call(this);
   }
@@ -1164,13 +1193,13 @@ class _$AppTimeoutImpl implements AppTimeout {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AppNetwork value)? network,
-    TResult Function(AppServer value)? server,
-    TResult Function(AppUnauthorized value)? unauthorized,
-    TResult Function(AppForbidden value)? forbidden,
-    TResult Function(AppNotFound value)? notFound,
-    TResult Function(AppTimeout value)? timeout,
-    TResult Function(AppUnknown value)? unknown,
+    TResult Function(NetworkExceptionNetwork value)? network,
+    TResult Function(NetworkExceptionServer value)? server,
+    TResult Function(NetworkExceptionUnauthorized value)? unauthorized,
+    TResult Function(NetworkExceptionForbidden value)? forbidden,
+    TResult Function(NetworkExceptionNotFound value)? notFound,
+    TResult Function(NetworkExceptionTimeout value)? timeout,
+    TResult Function(NetworkExceptionUnknown value)? unknown,
     required TResult orElse(),
   }) {
     if (timeout != null) {
@@ -1180,48 +1209,49 @@ class _$AppTimeoutImpl implements AppTimeout {
   }
 }
 
-abstract class AppTimeout implements AppException {
-  const factory AppTimeout(final String message) = _$AppTimeoutImpl;
+abstract class NetworkExceptionTimeout implements NetworkException {
+  const factory NetworkExceptionTimeout(final String message) =
+      _$NetworkExceptionTimeoutImpl;
 
   @override
   String get message;
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AppTimeoutImplCopyWith<_$AppTimeoutImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$NetworkExceptionTimeoutImplCopyWith<_$NetworkExceptionTimeoutImpl>
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AppUnknownImplCopyWith<$Res>
-    implements $AppExceptionCopyWith<$Res> {
-  factory _$$AppUnknownImplCopyWith(
-    _$AppUnknownImpl value,
-    $Res Function(_$AppUnknownImpl) then,
-  ) = __$$AppUnknownImplCopyWithImpl<$Res>;
+abstract class _$$NetworkExceptionUnknownImplCopyWith<$Res>
+    implements $NetworkExceptionCopyWith<$Res> {
+  factory _$$NetworkExceptionUnknownImplCopyWith(
+    _$NetworkExceptionUnknownImpl value,
+    $Res Function(_$NetworkExceptionUnknownImpl) then,
+  ) = __$$NetworkExceptionUnknownImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$AppUnknownImplCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res, _$AppUnknownImpl>
-    implements _$$AppUnknownImplCopyWith<$Res> {
-  __$$AppUnknownImplCopyWithImpl(
-    _$AppUnknownImpl _value,
-    $Res Function(_$AppUnknownImpl) _then,
+class __$$NetworkExceptionUnknownImplCopyWithImpl<$Res>
+    extends _$NetworkExceptionCopyWithImpl<$Res, _$NetworkExceptionUnknownImpl>
+    implements _$$NetworkExceptionUnknownImplCopyWith<$Res> {
+  __$$NetworkExceptionUnknownImplCopyWithImpl(
+    _$NetworkExceptionUnknownImpl _value,
+    $Res Function(_$NetworkExceptionUnknownImpl) _then,
   ) : super(_value, _then);
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({Object? message = null}) {
     return _then(
-      _$AppUnknownImpl(
+      _$NetworkExceptionUnknownImpl(
         null == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
@@ -1233,35 +1263,38 @@ class __$$AppUnknownImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AppUnknownImpl implements AppUnknown {
-  const _$AppUnknownImpl(this.message);
+class _$NetworkExceptionUnknownImpl implements NetworkExceptionUnknown {
+  const _$NetworkExceptionUnknownImpl(this.message);
 
   @override
   final String message;
 
   @override
   String toString() {
-    return 'AppException.unknown(message: $message)';
+    return 'NetworkException.unknown(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AppUnknownImpl &&
+            other is _$NetworkExceptionUnknownImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AppUnknownImplCopyWith<_$AppUnknownImpl> get copyWith =>
-      __$$AppUnknownImplCopyWithImpl<_$AppUnknownImpl>(this, _$identity);
+  _$$NetworkExceptionUnknownImplCopyWith<_$NetworkExceptionUnknownImpl>
+  get copyWith =>
+      __$$NetworkExceptionUnknownImplCopyWithImpl<
+        _$NetworkExceptionUnknownImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1312,13 +1345,13 @@ class _$AppUnknownImpl implements AppUnknown {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AppNetwork value) network,
-    required TResult Function(AppServer value) server,
-    required TResult Function(AppUnauthorized value) unauthorized,
-    required TResult Function(AppForbidden value) forbidden,
-    required TResult Function(AppNotFound value) notFound,
-    required TResult Function(AppTimeout value) timeout,
-    required TResult Function(AppUnknown value) unknown,
+    required TResult Function(NetworkExceptionNetwork value) network,
+    required TResult Function(NetworkExceptionServer value) server,
+    required TResult Function(NetworkExceptionUnauthorized value) unauthorized,
+    required TResult Function(NetworkExceptionForbidden value) forbidden,
+    required TResult Function(NetworkExceptionNotFound value) notFound,
+    required TResult Function(NetworkExceptionTimeout value) timeout,
+    required TResult Function(NetworkExceptionUnknown value) unknown,
   }) {
     return unknown(this);
   }
@@ -1326,13 +1359,13 @@ class _$AppUnknownImpl implements AppUnknown {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AppNetwork value)? network,
-    TResult? Function(AppServer value)? server,
-    TResult? Function(AppUnauthorized value)? unauthorized,
-    TResult? Function(AppForbidden value)? forbidden,
-    TResult? Function(AppNotFound value)? notFound,
-    TResult? Function(AppTimeout value)? timeout,
-    TResult? Function(AppUnknown value)? unknown,
+    TResult? Function(NetworkExceptionNetwork value)? network,
+    TResult? Function(NetworkExceptionServer value)? server,
+    TResult? Function(NetworkExceptionUnauthorized value)? unauthorized,
+    TResult? Function(NetworkExceptionForbidden value)? forbidden,
+    TResult? Function(NetworkExceptionNotFound value)? notFound,
+    TResult? Function(NetworkExceptionTimeout value)? timeout,
+    TResult? Function(NetworkExceptionUnknown value)? unknown,
   }) {
     return unknown?.call(this);
   }
@@ -1340,13 +1373,13 @@ class _$AppUnknownImpl implements AppUnknown {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AppNetwork value)? network,
-    TResult Function(AppServer value)? server,
-    TResult Function(AppUnauthorized value)? unauthorized,
-    TResult Function(AppForbidden value)? forbidden,
-    TResult Function(AppNotFound value)? notFound,
-    TResult Function(AppTimeout value)? timeout,
-    TResult Function(AppUnknown value)? unknown,
+    TResult Function(NetworkExceptionNetwork value)? network,
+    TResult Function(NetworkExceptionServer value)? server,
+    TResult Function(NetworkExceptionUnauthorized value)? unauthorized,
+    TResult Function(NetworkExceptionForbidden value)? forbidden,
+    TResult Function(NetworkExceptionNotFound value)? notFound,
+    TResult Function(NetworkExceptionTimeout value)? timeout,
+    TResult Function(NetworkExceptionUnknown value)? unknown,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -1356,16 +1389,17 @@ class _$AppUnknownImpl implements AppUnknown {
   }
 }
 
-abstract class AppUnknown implements AppException {
-  const factory AppUnknown(final String message) = _$AppUnknownImpl;
+abstract class NetworkExceptionUnknown implements NetworkException {
+  const factory NetworkExceptionUnknown(final String message) =
+      _$NetworkExceptionUnknownImpl;
 
   @override
   String get message;
 
-  /// Create a copy of AppException
+  /// Create a copy of NetworkException
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AppUnknownImplCopyWith<_$AppUnknownImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$NetworkExceptionUnknownImplCopyWith<_$NetworkExceptionUnknownImpl>
+  get copyWith => throw _privateConstructorUsedError;
 }

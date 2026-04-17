@@ -3,3 +3,5 @@
 
 export 'storage_di.dart';
 export 'contact_di.dart';
+export 'network_di.dart';
+export 'post_di.dart';
