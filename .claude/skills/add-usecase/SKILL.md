@@ -8,10 +8,6 @@ argument-hint: "[verb_domain 형태 파일명 (예: get_user, validate_password)
 
 `domain/[domain]/usecase/`에 UseCase를 생성하고 DI 등록과 테스트 파일까지 구성한다.
 
-> 레이어 의존 규칙·경로 A/B 판단 기준·DI 스코프 → `.claude/docs/architecture-detail.md`
-> 파일명·클래스명 패턴 전체 → `.claude/docs/naming-detail.md`
-> 테스트 패턴 → `.claude/docs/testing-detail.md`
-
 ---
 
 ## 단계 0: domain/common 사전 확인

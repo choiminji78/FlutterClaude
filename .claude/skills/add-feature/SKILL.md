@@ -8,11 +8,6 @@ argument-hint: "[feature 이름 (예: home, profile, settings)]"
 
 `feature/[feature]/`에 TCA 패턴 전체 구조(State, Action, Reducer, Effect, ViewModel, Page)를 생성하고 라우트를 등록한다.
 
-> 레이어 의존 규칙 → `.claude/docs/architecture-detail.md`
-> TCA 코드 템플릿·큐 동작 → `.claude/docs/state-management-detail.md`
-> 파일명·클래스명 패턴 → `.claude/docs/naming-detail.md`
-> 테스트 패턴 → `.claude/docs/testing-detail.md`
-
 ---
 
 ## 단계 0: 기반 파일 사전 확인
@@ -218,7 +213,7 @@ class [Feature]Effect {
 }
 ```
 
-> **State 직접 변경 금지** — 반드시 `_dispatch(Action) -> Reducer` 경로.
+> **State 직접 변경 금지** — 반드시 `_dispatch(Action) → Reducer` 경로.
 > UseCase 없으면 guard flag와 private 메서드 제거, `handleEffect`의 모든 케이스에서 `null` 반환.
 
 ### ViewModel

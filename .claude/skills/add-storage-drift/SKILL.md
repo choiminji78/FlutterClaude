@@ -8,10 +8,6 @@ argument-hint: "[domain]"
 
 Drift(SQLite ORM) 기반 로컬 DB 저장소를 도메인 단위로 생성하거나 기존 도메인에 CRUD 메서드를 추가한다.
 
-> 아키텍처·에러 전파·DI 규칙 → `.claude/docs/architecture-detail.md`
-> 파일명·클래스명 패턴 → `.claude/docs/naming-detail.md`
-> 디렉토리 구조 → `.claude/docs/directory-structure.md`
-
 ---
 
 ## 핵심 원칙

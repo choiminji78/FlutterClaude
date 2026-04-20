@@ -25,7 +25,7 @@ argument-hint: ""
 
 ## 단계 2: 코드 생성
 
-`[pkg]` → 패키지명, `[AppTitle]` → 앱 이름, `[base_url]` → API URL 치환하여 아래 파일을 생성한다. 네트워크 관련 파일은 포함 시에만 생성.
+`[pkg]` → 패키지명, `[AppTitle]` → 앱 이름, `[base_url]` → API URL 치환하여 아래 파일을 생성. 네트워크 관련 파일은 포함 시에만 생성.
 
 ### core/viewmodel/base_view_model.dart
 

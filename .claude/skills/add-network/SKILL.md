@@ -7,10 +7,6 @@ description: HTTP 네트워크 인프라(NetworkException·ApiResponse·[Server]
 
 HTTP 네트워크 인프라만 설정한다. 인프라 설정 후 도메인 연동은 `/add-remote-datasource`로 진행.
 
-> 에러 전파·래퍼 모델 → `.claude/docs/architecture-detail.md`
-> 파일명·클래스명 → `.claude/docs/naming-detail.md`
-> 디렉토리 구조 → `.claude/docs/directory-structure.md`
-
 ---
 
 ## 핵심 원칙

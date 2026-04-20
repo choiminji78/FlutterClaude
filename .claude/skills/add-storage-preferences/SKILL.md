@@ -8,18 +8,14 @@ argument-hint: "[domain] ([field]:[type])?"
 
 SharedPreferences 기반 키-값 저장 필드를 도메인 단위로 생성하거나 기존 도메인에 추가한다.
 
-> 아키텍처·에러 전파·DI 규칙 → `.claude/docs/architecture-detail.md`
-> 파일명·클래스명 패턴 → `.claude/docs/naming-detail.md`
-> 디렉토리 구조 → `.claude/docs/directory-structure.md`
-
 ---
 
 ## 핵심 원칙
 
 1. **단방향 의존** — `DataSource → Repository → ViewModel` 경로만 허용. ViewModel·UseCase에서 `PreferencesService` 직접 참조 금지.
 2. **변환 책임** — `StorageResponse → AppResult` 변환은 Repository 구현체에서만 수행. DataSource는 `StorageResponse<T>`를 그대로 반환.
-3. **계획 우선** — 파일 생성·수정 전 반드시 계획을 제시하고 사용자 승인을 받는다.
-4. **추측 금지** — 도메인명·필드명·타입이 불명확하면 구현하지 않고 확인한다.
+3. **계획 우선** — 파일 생성·수정 전 계획 제시 후 승인 필수.
+4. **추측 금지** — 도메인명·필드명·타입 불명확 시 질문.
 
 ---
 
@@ -566,12 +562,12 @@ flutter test test/data/[domain]/repository/[domain]_repository_impl_test.dart
 
 ## 금지 사항
 
-- 사용자 승인 없이 파일을 생성·수정하지 않는다
-- `DataSource`에서 `StorageResponse`를 `AppResult`로 변환하지 않는다
-- `Repository`에서 `StorageException`을 `AppException`으로 직접 변환하지 않는다 (`StorageExceptionMapper` 사용)
-- `PreferencesService`를 ViewModel·UseCase에서 직접 참조하도록 구현하지 않는다
-- `maybeWhen()`을 사용하지 않는다 (`when()` 필수)
-- `read[Field]`를 `async/Future`로 구현하지 않는다 — SharedPreferences는 메모리 캐시에서 동기 반환
-- `keepAlive: true` Provider에서 `ref.watch`를 사용하지 않는다
-- 지원 타입 (`String`, `bool`, `int`, `double`) 외 타입을 추측으로 구현하지 않는다
-- 필드 추가(3B)에서 DI 파일·`preferences_service.dart`·`storage_exception_mapper.dart`를 건드리지 않는다
+- 사용자 승인 없이 파일 생성·수정 금지
+- `DataSource`에서 `StorageResponse`를 `AppResult`로 변환 금지
+- `Repository`에서 `StorageException`을 `AppException`으로 직접 변환 금지 (`StorageExceptionMapper` 사용)
+- `PreferencesService`를 ViewModel·UseCase에서 직접 참조 구현 금지
+- `maybeWhen()` 사용 금지 (`when()` 필수)
+- `read[Field]`를 `async/Future`로 구현 금지 — SharedPreferences는 메모리 캐시에서 동기 반환
+- `keepAlive: true` Provider에서 `ref.watch` 사용 금지
+- 지원 타입 (`String`, `bool`, `int`, `double`) 외 타입 추측 구현 금지
+- 필드 추가(3B)에서 DI 파일·`preferences_service.dart`·`storage_exception_mapper.dart` 변경 금지

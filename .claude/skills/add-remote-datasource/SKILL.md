@@ -8,10 +8,18 @@ argument-hint: "[domain 이름 (예: user, product, order)]"
 
 `data/[domain]/`에 DTO, Remote DataSource, Mapper, Repository 구현체를 생성하고 DI를 등록한다.
 
-> 래퍼 모델·에러 전파·DataSource 조합 기준 → `.claude/docs/architecture-detail.md`
-> 파일명·클래스명 패턴 → `.claude/docs/naming-detail.md`
-> 디렉토리 구조 → `.claude/docs/directory-structure.md`
-> 테스트 패턴 → `.claude/docs/testing-detail.md`
+---
+
+## 흐름 유형
+
+`$ARGUMENTS`와 기존 파일 상태에 따라 두 가지 흐름 중 하나를 선택한다.
+
+| 흐름 | 조건 | 진행 |
+|---|---|---|
+| **흐름 A: 신규 DataSource 설정** | 해당 DataSource 파일이 존재하지 않음 | 단계 0 → 1 → 2 → 3 → 4 → 5 → 6 |
+| **흐름 B: 기존 DataSource 메서드 추가** | 해당 DataSource 파일이 이미 존재함 | 단계 0 → 1 → 2(API 명세 파악) → 3-B → 5 → 6 |
+
+흐름 B는 단계 1에서 DataSource 파일이 이미 존재한다는 것을 확인한 시점에 분기한다.
 
 ---
 
@@ -43,17 +51,19 @@ lib/domain/common/exception/app_exception.dart
 Glob으로 아래를 확인한다.
 
 ```
-lib/domain/[domain]/repository/[domain]_repository.dart   ← 인터페이스 존재 여부
-lib/domain/[domain]/entity/*_entity.dart                  ← Entity 파일 존재 여부
-lib/data/[domain]/repository/[domain]_repository_impl.dart ← 구현체 중복 여부
-lib/data/common/mapper/exception_mapper.dart              ← 공통 ExceptionMapper 존재 여부
+lib/domain/[domain]/repository/[domain]_repository.dart                        ← 인터페이스 존재 여부
+lib/domain/[domain]/entity/*_entity.dart                                       ← Entity 파일 존재 여부
+lib/data/[domain]/datasource/remote/[domain]_remote_data_source.dart           ← DataSource 중복 여부
+lib/data/[domain]/repository/[domain]_repository_impl.dart                     ← 구현체 중복 여부
+lib/data/common/mapper/exception_mapper.dart                                   ← 공통 ExceptionMapper 존재 여부
 ```
 
 | 상태 | 대응 |
 |---|---|
 | Repository 인터페이스 없음 | "Repository 인터페이스가 없습니다. `/add-repository`로 먼저 생성해 주세요." |
 | Entity 없음 | "Entity가 없습니다. `/add-entity`로 먼저 생성해 주세요." |
-| 구현체 이미 존재 | "Repository 구현체가 이미 있습니다. remote DataSource를 추가할까요?" 확인 후 진행 |
+| **DataSource 이미 존재** | "DataSource가 이미 있습니다. API 메서드를 추가할까요, 덮어쓸까요?" 확인 후 분기 — 메서드 추가면 **흐름 B**로, 덮어쓰기면 **흐름 A**로 |
+| 구현체 이미 존재 (DataSource 없음) | 흐름 A에서만 해당. "Repository 구현체가 이미 있습니다. 덮어쓸까요?" 확인 후 진행 |
 | ExceptionMapper 없음 | `lib/core/network/exception/network_exception.dart`와 `lib/domain/common/exception/app_exception.dart`를 **Read** 해 `when()` 케이스를 파악한 뒤 함께 생성 |
 | 모두 정상 | 인터페이스 파일과 Entity 파일을 **Read** 해 메서드 목록·Entity 필드를 파악한 뒤 다음 단계로 |
 
@@ -91,7 +101,65 @@ test/data/[domain]/repository/[domain]_repository_impl_test.dart
 
 ---
 
+## 단계 3-B: 기존 DataSource 메서드 추가 (흐름 B)
+
+> 이 단계는 흐름 B에서만 실행한다.
+
+### 3-B-1: 기존 파일 Read
+
+아래 파일을 모두 Read해 현재 상태를 파악한다.
+
+```
+lib/data/[domain]/datasource/remote/[domain]_remote_data_source.dart  ← 기존 메서드 시그니처
+lib/data/[domain]/mapper/[domain]_mapper.dart                         ← 기존 매핑 필드
+lib/data/[domain]/repository/[domain]_repository_impl.dart            ← 기존 구현 구조
+lib/domain/[domain]/repository/[domain]_repository.dart               ← 인터페이스에 메서드 선언 여부 확인
+```
+
+### 3-B-2: 추가 API 명세 파악
+
+단계 2와 동일한 항목을 추가할 메서드 기준으로 질문한다.
+
+- **엔드포인트**: HTTP method + URL
+- **응답 필드**: 서버 JSON 필드명·타입
+- **요청 body 필드** (POST/PUT/PATCH만)
+- **쿼리 파라미터** (목록 조회 등)
+- **JSON 필드명이 snake_case인지**
+
+### 3-B-3: 수정 계획 제시
+
+수정할 내용을 먼저 제시하고 사용자 확인 후 진행한다.
+
+```
+수정 파일:
+  lib/data/[domain]/datasource/remote/[domain]_remote_data_source.dart — [추가 메서드 목록]
+  lib/data/[domain]/repository/[domain]_repository_impl.dart           — [추가 메서드 목록]
+
+신규 생성 파일 (해당 시):
+  lib/data/[domain]/dto/request/[domain]_request_dto.dart              — 신규 RequestDTO (write 작업 시)
+  lib/data/[domain]/mapper/[domain]_mapper.dart                        — 새 매핑 메서드 (필요 시)
+
+확인 필요:
+  Repository 인터페이스에 해당 메서드가 없다면 먼저 추가해야 합니다.
+    → lib/domain/[domain]/repository/[domain]_repository.dart 확인
+  없으면 `/add-repository` 흐름 B로 메서드를 추가한 뒤 이 단계로 돌아오세요.
+```
+
+### 3-B-4: 파일 수정
+
+- DataSource abstract에 메서드 시그니처 추가
+- DataSource impl에 메서드 구현 추가
+- 필요 시 RequestDTO 신규 생성
+- 필요 시 Mapper에 변환 메서드 추가
+- Repository impl에 메서드 구현 추가
+
+흐름 B 완료 후 단계 5(build_runner)로 이동한다.
+
+---
+
 ## 단계 4: 코드 생성
+
+> **흐름 B에서는 이 단계를 건너뛴다.** 파일 수정은 단계 3-B-4에서 완료된다.
 
 ### ExceptionMapper (없을 때만 생성)
 
@@ -169,7 +237,7 @@ import 'package:flutter_claude/data/[domain]/dto/response/[domain]_response_dto.
 
 abstract class [Domain]RemoteDataSource {
   Future<ApiResponse<[Domain]ResponseDto>> get[Domain]({required String id});
-  // Future<ApiResponse<[Domain]ResponseDto>> create[Domain]({required [Domain]RequestDto request});
+  Future<ApiResponse<[Domain]ResponseDto>> create[Domain]({required [Domain]RequestDto request}); // write 작업 있을 때만
   // Future<ApiResponse<void>> delete[Domain]({required String id});
 }
 
@@ -186,8 +254,18 @@ class [Domain]RemoteDataSourceImpl implements [Domain]RemoteDataSource {
     );
   }
 
-  // POST: apiService.post('/[domain]s', body: request.toJson(), (json) => Dto.fromJson(json))
+  @override
+  Future<ApiResponse<[Domain]ResponseDto>> create[Domain]({required [Domain]RequestDto request}) {
+    return apiService.post(
+      '/[domain]s',
+      [Domain]ResponseDto.fromJson,
+      body: request.toJson(),
+    );
+  }
 }
+
+// DataSource는 RequestDTO를 파라미터로 받는다.
+// Repository 공개 인터페이스는 primitive만 허용 — RequestDTO 생성은 Repository 구현체 내부에서.
 ```
 
 ### Mapper
@@ -283,7 +361,7 @@ part '[domain]_di.g.dart';
 @Riverpod(keepAlive: true)
 [Domain]RemoteDataSource [domain]RemoteDataSource([Domain]RemoteDataSourceRef ref) {
   return [Domain]RemoteDataSourceImpl(
-    apiService: ref.read(apiServiceProvider),
+    apiService: ref.read([server]ApiServiceProvider), // add-network에서 생성된 서버별 Provider명 사용
   );
 }
 
@@ -346,3 +424,5 @@ flutter test test/data/[domain]/repository/[domain]_repository_impl_test.dart
 - DataSource 없이 Repository 구현체에서 HTTP 직접 호출
 - `ref.watch`를 `keepAlive: true` DI Provider에서 사용
 - 사용자 확인 없이 기존 파일 수정
+- 흐름 B에서 기존 DataSource를 Read하지 않고 메서드 추가
+- 흐름 B에서 Repository 인터페이스 확인 없이 DataSource 메서드만 추가하고 종료

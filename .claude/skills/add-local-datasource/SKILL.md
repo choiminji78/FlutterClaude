@@ -9,10 +9,14 @@ argument-hint: "[domain 이름 (예: user, product, order)]"
 `data/[domain]/`에 Local DataSource, Mapper, Repository 구현체를 생성하고 DI를 등록한다.
 저장소 유형에 따라 Drift Table(`core/storage/database/drift/tables/`)을 함께 생성한다.
 
-> 로컬 저장소 선택 기준·DataSource 조합 기준 → `.claude/docs/architecture-detail.md`
-> 파일명·클래스명 패턴 → `.claude/docs/naming-detail.md`
-> 디렉토리 구조 → `.claude/docs/directory-structure.md`
-> 테스트 패턴 → `.claude/docs/testing-detail.md`
+---
+
+## 흐름 유형
+
+| 흐름 | 조건 | 진행 |
+|---|---|---|
+| **흐름 A: 신규 DataSource 설정** | 해당 Local DataSource 파일이 존재하지 않음 | 단계 0 → 1 → 2 → 3 → 4 → 5 → 6 → 7 |
+| **흐름 B: 기존 DataSource 메서드 추가** | 해당 Local DataSource 파일이 이미 존재함 | 단계 0 → 1 → 5-B → 6 → 7 |
 
 ---
 
@@ -58,7 +62,7 @@ lib/data/common/mapper/storage_exception_mapper.dart                 ← 공통 
 | Entity 존재 | Entity 파일을 **Read** 해 필드를 파악한다 |
 | 구현체 이미 존재 (remote 선행) | "Remote Repository 구현체가 있습니다. local DataSource를 추가로 주입하는 방식으로 진행할까요?" 확인 후 `[domain]_repository_impl.dart`와 `[domain]_di.dart`를 **Read** 해 현재 생성자 구조·Provider 목록을 파악한 뒤 진행 |
 | 구현체 없음 | local only 구현체를 신규 생성 |
-| LocalDataSource 이미 존재 | "동일한 Local DataSource가 있습니다. 덮어쓸까요?" 확인 후 진행 |
+| LocalDataSource 이미 존재 | "Local DataSource가 이미 있습니다. 메서드를 추가할까요, 덮어쓸까요?" 확인 후 분기 — 메서드 추가면 **흐름 B**로, 덮어쓰기면 **흐름 A**로 |
 | StorageExceptionMapper 없음 | `lib/core/storage/common/exception/storage_exception.dart`와 `lib/domain/common/exception/app_exception.dart`를 **Read** 해 `when()` 케이스를 파악한 뒤 함께 생성 |
 
 > **참고**: 로케일·테마처럼 앱 전체 생명주기를 가지는 설정값은 로컬 DataSource 대신 `AppState` + `AppViewModel`에서 직접 관리하는 게 더 적합할 수 있다. 사용자가 app-level 설정을 요청하면 이 점을 먼저 안내한다.
@@ -235,8 +239,8 @@ class [Domain]LocalDataSourceImpl implements [Domain]LocalDataSource {
 
 ### Local DataSource — SharedPreferences
 
-> SharedPreferences `getString()` 등 읽기 메서드는 인스턴스 초기화 후 **동기** 호출 가능.
-> 읽기는 `StorageResponse<T>` (Future 없음), 쓰기(`setString` 등)는 `Future<StorageResponse<void>>`.
+> `PreferencesService.getString()` 등 읽기는 내부적으로 동기 호출이지만, 인터페이스 일관성을 위해 읽기도 `Future<StorageResponse<T>>`로 선언한다.
+> 쓰기(`setString` 등)는 `Future<StorageResponse<void>>`.
 
 ```dart
 import 'package:flutter_claude/core/storage/common/dto/storage_response.dart';
@@ -244,8 +248,8 @@ import 'package:flutter_claude/core/storage/common/exception/storage_exception.d
 import 'package:flutter_claude/core/storage/preferences/preferences_service.dart';
 
 abstract class [Domain]LocalDataSource {
-  StorageResponse<String> get[Value]();                          // 동기 읽기
-  Future<StorageResponse<void>> save[Value]({required String value}); // 비동기 쓰기
+  Future<StorageResponse<String>> get[Value]();                          // 비동기 읽기
+  Future<StorageResponse<void>> save[Value]({required String value});    // 비동기 쓰기
 }
 
 class [Domain]LocalDataSourceImpl implements [Domain]LocalDataSource {
@@ -256,8 +260,8 @@ class [Domain]LocalDataSourceImpl implements [Domain]LocalDataSource {
   static const _key[Value] = '[domain]_[value]';
 
   @override
-  StorageResponse<String> get[Value]() {
-    final value = preferencesService.getString(_key[Value]); // 동기
+  Future<StorageResponse<String>> get[Value]() async {
+    final value = preferencesService.getString(_key[Value]); // 내부는 동기
     if (value == null) {
       return StorageResponse.failure(
         StorageException.notFound('[Value] not found'),
@@ -356,9 +360,9 @@ class [Domain]DriftMapper {
     );
   }
 
-  [Domain]TableCompanion toLocal([Domain]Entity entity) {
+  [Domain]TableCompanion toInsertCompanion([Domain]Entity entity) {
     return [Domain]TableCompanion(
-      // id: Value(entity.id),
+      // autoIncrement PK는 Value.absent() 또는 생략 (DB 자동 생성)
       // name: Value(entity.name),
     );
   }
@@ -430,7 +434,7 @@ class [Domain]RepositoryImpl implements [Domain]Repository {
   // save[Domain]: 명시적 캐시 저장 액션
   @override
   Future<AppResult<void>> save[Domain]({required [Domain]Entity entity}) async {
-    final companion = driftMapper.toLocal(entity);
+    final companion = driftMapper.toInsertCompanion(entity);
     final response = await localDataSource.save[Domain](data: companion as [Domain]TableData);
     return response.when(
       success: (_) => const AppResult.success(null),
@@ -535,6 +539,82 @@ Future<[Domain]Repository> [domain]Repository([Domain]RepositoryRef ref) async {
 
 ---
 
+## 단계 5-B: 기존 DataSource 메서드 추가 (흐름 B)
+
+### 5-B-1: 기존 파일 파악
+
+아래 파일을 **Read** 해 현재 구조를 파악한다.
+
+- `lib/data/[domain]/datasource/local/[domain]_local_data_source.dart` — 현재 인터페이스·구현체 메서드 목록
+- `lib/data/[domain]/repository/[domain]_repository_impl.dart` — Repository 구현체에서 DataSource 사용 방식 확인
+- `lib/domain/[domain]/repository/[domain]_repository.dart` — Repository 인터페이스에 추가할 메서드가 있는지 확인
+
+저장소 유형(Drift / SharedPreferences / SecureStorage)은 DataSource 파일의 import와 구현체로 파악한다.
+
+---
+
+### 5-B-2: 추가 메서드 명세 파악
+
+아래를 질문한다.
+
+- **메서드 이름**: 동사 + 명사 형태 (예: `getAll[Domain]s`, `delete[Domain]`)
+- **파라미터**: 타입·이름
+- **반환 타입**: `StorageResponse<T>` 기준으로 T 타입
+
+---
+
+### 5-B-3: 수정 계획 제시
+
+아래 형식으로 제시하고 사용자 확인 후 진행한다.
+
+```
+수정 파일
+- lib/data/[domain]/datasource/local/[domain]_local_data_source.dart  ← 인터페이스 + 구현체 메서드 추가
+- lib/data/[domain]/repository/[domain]_repository_impl.dart           ← Repository 인터페이스에 메서드가 있는 경우 추가
+```
+
+> Repository 인터페이스(`lib/domain/[domain]/repository/[domain]_repository.dart`)에 아직 해당 메서드가 없다면 함께 추가할지 확인한다.
+
+---
+
+### 5-B-4: 파일 수정
+
+**DataSource — 인터페이스 메서드 추가:**
+
+```dart
+// abstract class에 추가
+Future<StorageResponse<List<[Domain]TableData>>> getAll[Domain]s();
+```
+
+**DataSource — 구현체 메서드 추가 (Drift 예시):**
+
+```dart
+@override
+Future<StorageResponse<List<[Domain]TableData>>> getAll[Domain]s() async {
+  try {
+    final rows = await db.select(db.[domain]Table).get();
+    return StorageResponse.success(rows);
+  } catch (e) {
+    return StorageResponse.failure(StorageException.general(e.toString()));
+  }
+}
+```
+
+**Repository 구현체 — 메서드 추가 (Repository 인터페이스에 신규 메서드 추가 시):**
+
+```dart
+@override
+Future<AppResult<List<[Domain]Entity>>> getAll[Domain]s() async {
+  final response = await localDataSource.getAll[Domain]s();
+  return response.when(
+    success: (data) => AppResult.success(data.map(driftMapper.toDomain).toList()),
+    failure: (exception) => AppResult.failure(storageExceptionMapper.map(exception)),
+  );
+}
+```
+
+---
+
 ## 단계 6: build_runner
 
 ```bash
@@ -571,3 +651,5 @@ flutter test test/data/[domain]/repository/[domain]_repository_impl_test.dart
 - `StorageResponse` / `StorageException`을 Repository 구현체 외부로 전달
 - `ref.watch`를 `keepAlive: true` DI Provider에서 사용
 - 사용자 확인 없이 기존 파일 수정
+- 흐름 B에서 기존 DataSource를 Read하지 않고 메서드 추가
+- 흐름 B에서 Repository 인터페이스 확인 없이 DataSource 메서드만 추가하고 종료
