@@ -224,18 +224,16 @@ class ApiService {
   }
 
   NetworkException _map(DioException e) {
-    switch (e.response?.statusCode) {
-      case 401: return NetworkException.unauthorized(e.message ?? 'Unauthorized');
-      case 404: return NetworkException.notFound(e.message ?? 'Not found');
-      case >= 500: return NetworkException.serverError(e.message ?? 'Server error');
-      default:
-        if (e.type == DioExceptionType.connectionError ||
-            e.type == DioExceptionType.receiveTimeout ||
-            e.type == DioExceptionType.sendTimeout) {
-          return NetworkException.noConnection(e.message ?? 'No connection');
-        }
-        return NetworkException.unknown(e.message ?? 'Unknown error');
+    final statusCode = e.response?.statusCode;
+    if (statusCode == 401) return NetworkException.unauthorized(e.message ?? 'Unauthorized');
+    if (statusCode == 404) return NetworkException.notFound(e.message ?? 'Not found');
+    if (statusCode != null && statusCode >= 500) return NetworkException.serverError(e.message ?? 'Server error');
+    if (e.type == DioExceptionType.connectionError ||
+        e.type == DioExceptionType.receiveTimeout ||
+        e.type == DioExceptionType.sendTimeout) {
+      return NetworkException.noConnection(e.message ?? 'No connection');
     }
+    return NetworkException.unknown(e.message ?? 'Unknown error');
   }
 }
 ```
@@ -318,6 +316,7 @@ class NetworkExceptionMapper {
 ```dart
 import 'package:[pkg]/core/storage/preferences/preferences_service.dart';
 import 'package:[pkg]/core/storage/secure_storage/secure_storage_service.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -338,6 +337,7 @@ SecureStorageService secureStorageService(Ref ref) => SecureStorageService();
 ```dart
 import 'package:[pkg]/core/network/service/api_service.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'network_di.g.dart';
@@ -450,6 +450,9 @@ class AppViewModel extends _$AppViewModel
   late final _effect = AppEffect(ref, dispatch);
 
   @override
+  AppState build() => buildInitialState();
+
+  @override
   AppState buildInitialState() => const AppState();
 
   @override
@@ -470,6 +473,7 @@ class AppViewModel extends _$AppViewModel
 
 ```dart
 import 'package:[pkg]/app/router/app_routes.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -537,6 +541,23 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
   runApp(const ProviderScope(child: App()));
+}
+```
+
+### test/widget_test.dart
+
+flutter create 기본 파일이 `MyApp`을 참조하므로 교체한다.
+
+```dart
+import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:[pkg]/app/view/app.dart';
+
+void main() {
+  testWidgets('App smoke test', (WidgetTester tester) async {
+    await tester.pumpWidget(const ProviderScope(child: App()));
+    expect(find.byType(App), findsOneWidget);
+  });
 }
 ```
 
