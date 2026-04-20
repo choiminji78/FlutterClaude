@@ -1,7 +1,5 @@
 # Naming
 
-> 전체 네이밍 표: 스킬 호출 시 `.claude/docs/naming-detail.md` 로드됨
-
 ## 핵심 패턴
 
 - 파일: `snake_case`, `[대상]_[역할].dart` (예: `user_repository_impl.dart`)
@@ -16,7 +14,7 @@
 ## Provider 네이밍
 
 - Riverpod Generator 자동 생성: 클래스명 기반 camelCase + `Provider`
-- 예: `UserViewModel` -> `userViewModelProvider`
+- 예: `UserViewModel` → `userViewModelProvider`
 
 ## DI 파일
 

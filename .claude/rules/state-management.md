@@ -1,10 +1,8 @@
 # State Management
 
-> 코드 템플릿·Provider 스코프 표: 스킬 호출 시 `.claude/docs/state-management-detail.md` 로드됨
-
 ## 패턴
 
-- Riverpod + TCA. 단방향 흐름: `UI -> dispatch(Action) -> 큐(FIFO) -> Reducer -> State / Effect`.
+- Riverpod + TCA. 단방향 흐름: `UI → dispatch(Action) → 큐(FIFO) → Reducer → State / Effect`.
 
 ## Freezed 규칙
 
@@ -28,7 +26,7 @@
 
 ## Effect
 
-- 비동기 작업 처리. **State 직접 변경 금지** — 반드시 `dispatch(Action) -> Reducer` 경로.
+- 비동기 작업 처리. **State 직접 변경 금지** — 반드시 `dispatch(Action) → Reducer` 경로.
 - `AppResult`의 모든 케이스를 Action으로 변환하여 dispatch.
 - 관심 없는 Action은 `when()`에서 `null` 반환.
 - **중복 실행 방어는 Effect 내부 guard flag로.** UI `isLoading` 방어는 보조 수단.
@@ -36,7 +34,7 @@
 ## ViewModel
 
 - `BaseViewModel<S, A>` mixin + `@riverpod`. Reducer와 Effect를 orchestration.
-- Effect는 ViewModel이 직접 생성하여 소유. 별도 Provider로 등록하지 않는다.
+- Effect는 ViewModel이 직접 생성·소유. 별도 Provider 등록 금지.
 - feature ViewModel: `@riverpod` (AutoDispose). AppViewModel: `@Riverpod(keepAlive: true)`.
 
 ## AppState 범위
