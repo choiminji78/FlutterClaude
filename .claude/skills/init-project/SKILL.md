@@ -15,15 +15,31 @@ argument-hint: ""
 `lib/core/viewmodel/base_view_model.dart` Glob 확인.
 존재 시 "이미 초기화된 프로젝트입니다. 덮어쓸까요?" 확인 후 진행.
 
-## 단계 1: 프로젝트 정보 수집
+## 단계 1: Flutter 프로젝트 생성 (pubspec.yaml 없을 때만)
 
-`pubspec.yaml` Read → `name:` 추출 → 모든 템플릿의 `[pkg]` 치환.
+`pubspec.yaml` Glob 확인. 없으면 한 번에 질문:
 
-한 번에 질문:
-1. **앱 이름** — `MaterialApp.router`의 `title`에 사용 (`[AppTitle]` 치환)
-2. **네트워크 레이어 포함 여부** — 포함 시 API base URL도 수집 (`[base_url]` 치환)
+1. **org** — 역도메인 (예: `net.huray`)
+2. **project name** — snake_case (예: `nest_flutter`)
+3. **앱 표시명** — `[AppTitle]` 치환
+4. **플랫폼** — 기본 `android,ios`
 
-## 단계 2: 코드 생성
+```bash
+flutter create . --org [org] --project-name [project_name] --platforms [platforms]
+```
+
+생성 후 앱 표시명 반영:
+- `android/app/src/main/AndroidManifest.xml` → `android:label="[AppTitle]"`
+- `ios/Runner/Info.plist` → `CFBundleDisplayName` 값을 `[AppTitle]`로 교체
+
+## 단계 2: 정보 수집
+
+`pubspec.yaml` Read → `name:` 추출 → `[pkg]` 치환.
+수집 안 된 항목만 질문:
+1. **앱 이름** — `MaterialApp.router`의 `title` (`[AppTitle]` 치환)
+2. **네트워크 레이어 포함 여부** — 포함 시 base URL도 수집 (`[base_url]` 치환)
+
+## 단계 3: 코드 생성
 
 `[pkg]` → 패키지명, `[AppTitle]` → 앱 이름, `[base_url]` → API URL 치환하여 아래 파일을 생성. 네트워크 관련 파일은 포함 시에만 생성.
 
@@ -57,9 +73,7 @@ mixin BaseViewModel<S, A> on AutoDisposeNotifier<S> {
       state = reduce(state, action);
       try {
         await handleEffect(action);
-      } catch (_) {
-        // Effect 예외가 다음 액션 처리를 막지 않도록 격리
-      }
+      } catch (_) {}
     }
     _isProcessing = false;
   }
@@ -68,7 +82,7 @@ mixin BaseViewModel<S, A> on AutoDisposeNotifier<S> {
 
 ### core/viewmodel/base_keep_alive_view_model.dart
 
-위 `base_view_model.dart`와 동일하되 클래스명과 `on` 타입만 변경:
+`base_view_model.dart`와 동일. 변경점:
 - `mixin BaseKeepAliveViewModel<S, A> on Notifier<S>`
 
 ### core/storage/common/dto/storage_response.dart
@@ -255,7 +269,7 @@ sealed class AppResult<T> with _$AppResult<T> {
 
 ### domain/common/exception/app_exception.dart
 
-네트워크 제외 시 `notFound` + `unknown`만 포함. 네트워크 포함 시 전체 포함.
+네트워크 제외 시 `notFound` + `unknown`만. 네트워크 포함 시 전체.
 
 ```dart
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -356,9 +370,8 @@ ApiService apiService(Ref ref) {
 ### app/di/di.dart
 
 ```dart
-// DI 진입점 — 스킬 실행 시 export가 추가된다.
 export 'storage_di.dart';
-// 네트워크 포함 시: export 'network_di.dart'; 추가
+// 네트워크 포함 시: export 'network_di.dart';
 ```
 
 ### app/state/app_state.dart
@@ -371,7 +384,7 @@ part 'app_state.freezed.dart';
 @freezed
 class AppState with _$AppState {
   const factory AppState({
-    @Default(false) bool isInitialized,  // 스플래시 게이트
+    @Default(false) bool isInitialized,
   }) = _AppState;
 }
 ```
@@ -425,7 +438,6 @@ class AppEffect {
   }
 
   Future<void> _initialize() async {
-    // 앱 초기화 로직 (토큰 복원, 캐시 워밍 등)을 여기서 수행한다.
     _dispatch(const AppAction.initializedSucceeded());
   }
 }
@@ -461,8 +473,6 @@ class AppViewModel extends _$AppViewModel
   @override
   Future<void> handleEffect(AppAction action) => _effect.handleEffect(action);
 
-  // ── Navigation ──
-
   void go(String path) => ref.read(appRouterProvider).go(path);
   void push(String path) => ref.read(appRouterProvider).push(path);
   void pop() => ref.read(appRouterProvider).pop();
@@ -487,7 +497,7 @@ GoRouter appRouter(Ref ref) {
 
 ### app/router/app_routes.dart
 
-`/add-feature` 스킬 실행 시 이 파일에 GoRoute가 추가된다.
+`/add-feature` 스킬 실행 시 GoRoute가 추가된다.
 
 ```dart
 import 'package:flutter/material.dart';
@@ -563,14 +573,9 @@ void main() {
 
 ---
 
-## 단계 3: build_runner
+## 단계 4: 빌드 & 검증
 
 ```bash
 dart run build_runner build --delete-conflicting-outputs
-```
-
-## 단계 4: 검증
-
-```bash
 flutter analyze
 ```
