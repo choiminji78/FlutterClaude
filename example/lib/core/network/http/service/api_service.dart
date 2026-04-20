@@ -58,6 +58,49 @@ class ApiService {
     }
   }
 
+  Future<ApiResponse<void>> postVoid(
+    String path, {
+    Map<String, dynamic>? body,
+  }) async {
+    try {
+      await client.post(path, data: body);
+      return const ApiResponse.success(null);
+    } on DioException catch (e) {
+      return ApiResponse.failure(_extractException(e));
+    } catch (e) {
+      return ApiResponse.failure(NetworkException.unknown(e.toString()));
+    }
+  }
+
+  Future<ApiResponse<T>> put<T>(
+    String path,
+    T Function(Map<String, dynamic>) fromJson, {
+    required Map<String, dynamic> body,
+  }) async {
+    try {
+      final res = await client.put(path, data: body);
+      return ApiResponse.success(fromJson(res.data as Map<String, dynamic>));
+    } on DioException catch (e) {
+      return ApiResponse.failure(_extractException(e));
+    } catch (e) {
+      return ApiResponse.failure(NetworkException.unknown(e.toString()));
+    }
+  }
+
+  Future<ApiResponse<void>> putVoid(
+    String path, {
+    Map<String, dynamic>? body,
+  }) async {
+    try {
+      await client.put(path, data: body);
+      return const ApiResponse.success(null);
+    } on DioException catch (e) {
+      return ApiResponse.failure(_extractException(e));
+    } catch (e) {
+      return ApiResponse.failure(NetworkException.unknown(e.toString()));
+    }
+  }
+
   Future<ApiResponse<void>> delete(
     String path, {
     Map<String, dynamic>? queryParameters,
